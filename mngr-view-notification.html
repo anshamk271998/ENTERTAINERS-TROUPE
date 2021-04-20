@@ -1,0 +1,36 @@
+{% extends "aa.html" %}
+{% block body %}
+
+<h2 align="center"><u>VIEW NOTIFICATION</U></h2>
+    <form>
+  <table  border="1" align="center">
+    <tr>
+      <th >From Date</th>
+      <td><input type="date" name="textfield" id="textfield" /></td>
+      <th >To Date</th>
+      <td ><input type="date" name="textfield2" id="textfield2" /></td>
+      <td ><input type="submit" name="button" id="button" value="Go" /></td>
+    </tr>
+  </table>
+  <table class="table table-bordered">
+    <tr>
+      <th >SlNo</th>
+      <th>Subject</th>
+      <th >Content</th>
+      <th >Date</th>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>{{ i.subject }}</td>
+      <td>{{ i.content}}</td>
+       <td>{{ i.date}}</td>
+
+
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+{% endblock %}
