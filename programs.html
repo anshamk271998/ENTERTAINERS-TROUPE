@@ -1,0 +1,22 @@
+{% extends "admin_index.html" %}
+{% block body %}
+<h1 align="center"><u>PROGRAMS</U></h1>
+<form action="" method="get"><table class="table table-bordered">
+  <tr>
+    <th>SlNo</th>
+    <th>Program Name</th>
+    <th>Description</th>
+    <th>Duration</th>
+  </tr>
+  <tr>
+       {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>{{ i.program_name}}
+       <td>{{ i.description}}
+    <td>{{ i.duration}}
+     {% endfor %}
+  </tr>
+</table>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "admin_index.html" %}
+{% block body %}
+<h1 align="center"><u>SENT REPLY</U></h1>
+<table  border="1">
+<form id="form1" name="form1" method="post" action="/myapp/adm_sent_reply_post/">
+  <tr>
+    <th>Reply</th>
+    <td><textarea name="textarea" id="textarea" cols="45" rows="5"></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="Send" /></td>
+  </tr>
+</table>
+</form>
+{% endblock %}

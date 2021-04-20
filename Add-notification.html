@@ -1,0 +1,23 @@
+{% extends "index3.html" %}
+{% block body %}
+
+<form action="/myapp/adm_add_notification_post/" method="post">
+    <table class="table table-bordered" >
+         <p align="center">
+    <h3 align="center">ADD NOTIFICATION</h3></p>
+
+  <tr>
+    <th >Subject</th>
+    <td ><input type="text" name="textfield"  pattern="[a-zA-Z ]{1,50}" required id="textfield" class="form-control"/></td>
+  </tr>
+  <tr>
+    <th>Content</td>
+     <td><textarea name="textarea" required id="textarea"   class="form-control"  cols="45" rows="5" ></textarea></td>
+  </tr>
+  <tr>
+  <td></td>
+    <td colspan="2" align="center"><input type="submit" name="button" id="button" value="SEND" class="btn btn-primary" /></td>
+    </tr>
+</table>
+</form>
+{% endblock %}

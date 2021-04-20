@@ -1,0 +1,93 @@
+{% extends "admin_index.html" %}
+{% block body %}
+<h2 align="center"><u>TROUPE INFORMATION</U></h2>
+     <form action="" method="post">
+{% for i in data %}
+<table class="table-bordered">
+
+    <tr>
+        <td align="center" colspan="2"><img src="{{ i.troupe_logo }}" width="100" height="100"/></td>
+    </tr>
+        <tr>
+            <td><b> Troupe Name</b></td>
+            <td>{{i.troupe_name }}</td>
+        </tr>
+    <tr>
+            <td><b>Description</b></td>
+            <td>{{ i.description }}</td></td>
+        </tr>
+<tr>
+    <td><a class="btn btn-info" href="/myapp/adm_artistes/{{ i.pk }}">Members</a></td>
+                         <td><a class="btn btn-info" href="/myapp/adm_programs/{{ i.pk }}">Programs</a></td>
+</tr>
+
+</table>
+         <p></p>
+           {% endfor %}
+{#     <table>#}
+{#         <tr>#}
+{#             {% for i in range (0,ln,3) %}#}
+{#                 <td>#}
+{#                 <table width="200" border="1">#}
+{#                  <tr>#}
+{#                    <td colspan="2"><img src="{{ data[i].troupe_logo }}" width="100" height="100"/></td>#}
+{#                  </tr>#}
+{#                  <tr>#}
+{#                    <td colspan="2"><b> Troupe Name</b>&emsp;{{ data[i].troupe_name }}</td>#}
+{#                  </tr>#}
+{#                  <tr>#}
+{#                    <td colspan="2"><b>Description</b>&emsp;:{{ data[i].description }}</td>#}
+{#                  </tr>#}
+{#                  <tr>#}
+{#                    <td><a href="/myapp/adm_artistes/">Members</a></td>#}
+{#                     <td><a href="/myapp/adm_programs/">Programs</a></td>#}
+{#                  </tr>#}
+{#                </table>#}
+{#                 </td>#}
+{#                 {% if i + 1 <ln %}#}
+{#                 <td>#}
+{#                    <table width="200" border="1">#}
+{#                      <tr>#}
+{#                        <td colspan="2"><img src="{{ data[i+1].troupe_logo }}" width="100" height="100"/></td>#}
+{#                      </tr>#}
+{#                      <tr>#}
+{#                        <td colspan="2"><b> Troupe Name</b>&emsp;{{ data[i+1].troupe_name }}</td>#}
+{#                      </tr>#}
+{#                      <tr>#}
+{#                          <td colspan="2"><b>Description</b>&emsp;:{{ data[i+1].description }}</td>#}
+{#                      </tr>#}
+{#                      <tr>#}
+{#                        <td><a href="/myapp/adm_artistes/">Members</a></td>#}
+{#                         <td><a href="/myapp/adm_programs/">Programs</a></td>#}
+{#                      </tr>#}
+{##}
+{#                    </table>#}
+{#                 </td>#}
+{#                 {% endif %}#}
+{#                 {% if i + 2 <ln %}#}
+{#                 <td>#}
+{#                    <table width="200" border="1">#}
+{#                      <tr>#}
+{#                        <td colspan="2"><img src="{{ data[i+2].troupe_logo }}" width="100" height="100"/></td>#}
+{#                      </tr>#}
+{#                      <tr>#}
+{#                        <td colspan="2"><b> Troupe Name</b>&emsp;{{ data[i+2].troupe_name }}</td>#}
+{#                      </tr>#}
+{#                      <tr>#}
+{#                          <td colspan="2"><b>Description</b>&emsp;:{{ data[i+2].description }}</td>#}
+{#                      </tr>#}
+{#                      <tr>#}
+{#                        <td><a href="/myapp/adm_artistes/">Members</a></td>#}
+{#                         <td><a href="/myapp/adm_programs/">Programs</a></td>#}
+{#                      </tr>#}
+{#                       {% endif %}#}
+{#                    </table>#}
+{#                 </td>#}
+{##}
+{#                 {% endfor %}#}
+{##}
+{#         </tr>#}
+{#     </table>#}
+ </form>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "admin_index.html" %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <td>Date</td>
+      <td><input type="date" name="textfield" id="textfield" /></td>
+      <td>To</td>
+      <td><input type="date" name="textfield2" id="textfield2" /></td>
+      <td><input type="submit" name="button" id="button" value="Go" /></td>
+    </tr>
+  </table>
+  <table width="200" border="1">
+    <tr>
+      <th>SlNo</th>
+      <th>Customer Name</th>
+      <th>Troupe Name</th>
+      <th>Book Date</th>
+      <th>Budjet</th>
+      <th>Status</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+           {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+                <td>{{ i.CUSTOMER.cust_name }}</td>
+                <td>{{ i.TROUPE.troupe_name}}</td>
+                <td>{{ i.book_date}}
+                <td>{{ i.my_budget}}
+                <td>{{ i.status}}
+                <td>{{ i.description}}
+
+     {% endfor %}
+
+    </tr>
+  </table>
+</form>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "admin_index.html" %}
+{% block body %}
+    <h1 align="center"><u>VIEW COMPLIANT</U></h1>
+<form id="form1" name="form1" method="post" action="">
+  <table  border="1">
+    <tr>
+      <th>From Date</th>
+      <td><input type="date" name="textfield" id="textfield" /></td>
+      <th>To Date</th>
+      <td><input type="date" name="textfield2" id="textfield2" /></td>
+      <td><input type="submit" name="button" id="button" value="Go" /></td>
+    </tr>
+  </table>
+  <table  border="1">
+    <tr>
+      <th>SlNo</th>
+      <th>Customer Name</th>
+      <th>Complaint</th>
+      <th> Date</th>
+      <th>Reply</th>
+
+    </tr>
+       {% for i in data %}
+    <tr>
+
+        <td>{{ forloop.counter }}&nbsp;</td>
+        <td>{{ i.CUSTOMER.cust_name }}</td>
+       <td>{{ i.complaint }}</td>
+       <td>{{ i.date }}</td>
+     <td>
+         {%  if i.reply == 'pending' %}
+            <a href="/myapp/adm_sent_reply/" class="btn btn-primary">Send reply</a></td>
+        {% else %}
+            {{ i.reply }}
+        {% endif %}
+
+    </tr>
+       {% endfor %}
+  </table>
+</form>
+{% endblock %}

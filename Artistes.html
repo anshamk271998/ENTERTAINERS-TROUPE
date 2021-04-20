@@ -1,0 +1,33 @@
+{% extends "admin_index.html" %}
+{% block body %}
+<h2 align="center"><u>ARTISTS</U></h2>
+<form action="" method="get">
+<table  border="1" align="center">
+  <tr>
+    <th>SlNo</th>
+    <th>Name</th>
+    <th>Place</th>
+      <th>gender</th>
+    <th>Email</th>
+    <th>PhNo</th>
+    <th>Item name</th>
+  </tr>
+  <tr>
+     {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>{{ i.artist_name}}
+     <img src="{{ i.artist_photo}}" height="100px" width=100px"> </td>
+       <td>{{ i.place}}
+    <td>{{ i.gender}}
+     <td>{{ i.email}}</td>
+     <td>{{ i.phone}}</td>
+     <td>{{ i.item_name}}</td>
+
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+{% endblock %}
+

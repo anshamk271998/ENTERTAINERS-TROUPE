@@ -1,0 +1,37 @@
+{% extends "index3.html" %}
+{% block body %}
+<form id="form1" name="form1"  align="center" method="post" action="/myapp/adm_view_notification_post/">
+<h2 align="center"><u>UPDATE NOTIFICATION</U></h2>
+  <table  border="1" align="center">
+    <tr>
+      <th >From Date</th>
+      <td><input type="date" name="textfield" id="textfield" /></td>
+      <th >To Date</th>
+      <td ><input type="date" name="textfield2" id="textfield2" /></td>
+      <td ><input type="submit" name="button" id="button" value="Go" /></td>
+    </tr>
+  </table>
+  <table class="table table-bordered">
+    <tr>
+      <th >SlNo</th>
+      <th>Subject</th>
+      <th >Content</th>
+      <th >Date</th>
+      <td >&nbsp;</td>
+      <td >&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>{{ i.subject }}</td>
+      <td>{{ i.content}}</td>
+       <td>{{ i.date}}</td>
+      <td><a href="/myapp/adm_delete_notification/{{ i.pk }}" class="btn btn-danger"> Delete</a></td>
+      <td><a href="/myapp/adm_edit_notification/{{ i.pk }}" class="btn btn-info">Edit</a></td>
+
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+{% endblock %}

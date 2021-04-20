@@ -1,0 +1,22 @@
+{% extends "index3.html" %}
+{% block body %}
+
+    <h2 align="center"><u><b>UPDATE NOTIFICATION</b></U></h2>
+<form action="/myapp/adm_edit_notification_post/" method="post">
+    <table class="table table-bordered" width="416" border="1" align="center">
+  <tr>
+    <th width="68">Subject</th>
+    <td width="332"><input type="text" name="textfield" id="textfield" required   value="{{ upd.subject }}" /></td>
+  </tr>
+  <tr>
+    <th>Content</td>
+     <td><textarea name="textarea" id="textarea" required   cols="45" rows="5">{{ upd.content }}</textarea></td>
+  </tr>
+  <tr>
+  <td></td>
+    <td colspan="2"><input type="submit" name="button" id="button" value="Update
+    " /></td>
+    </tr>
+</table>
+</form>
+{% endblock %}

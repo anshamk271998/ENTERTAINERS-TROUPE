@@ -1,0 +1,36 @@
+{% extends "index3.html" %}
+{% block body %}
+<h2 align="center"><u><b>APPROVE TROUPE MANAGER REQUEST</b></U></h2>
+<form action="" method="post">
+<table class="table table-bordered">
+  <tr>
+    <td>SlNo</td>
+    <td>Troupe Manager Name</td>
+    <td>Address</td>
+    <td>Phno</td>
+      <td>Gender</td>
+       <td>Email</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  
+  </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>{{ i.mngr_name }}
+     <img src="{{ i.photo}}" height="100px" width=100px"> </td>
+       <td>{{ i.place}}
+        {{ i.post}}
+        {{ i.district}}
+        {{ i.pin}}</td>
+        <td>{{ i.phno}}</td>
+        <td>{{ i.gender}}</td>
+           <td>{{ i.email}}</td>
+    <td><a href="/myapp/adm_accept_troupe_manager/{{ i.LOGIN_id }}" class="btn btn-primary" >ACCEPT</a></td>
+   <td><a href="/myapp/adm_reject_troupe_manager/{{ i.LOGIN_id }}" class="btn btn-danger" > REJECT</a></td>
+   
+  </tr>
+    {% endfor %}
+</table>
+</form>
+{% endblock %}
