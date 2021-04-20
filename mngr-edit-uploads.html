@@ -1,0 +1,23 @@
+{% extends "aa.html" %}
+{% block body %}
+<h1 align="center"><u><strong>ADD ARTISTS</strong></U></h1>
+<form action="" method="get" enctype="multipart/form-data">
+<table  border="1">
+  <tr>
+    <th  height="47">Choose file</th>
+    <td ><label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField" /></td>
+  </tr>
+  <tr>
+    <th >Type</th>
+    <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" /></td>
+  </tr>
+  <tr>
+    <td >&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="UPDATE
+    " /></td>
+  </tr>
+</table>
+</form>
+{% endblock %}

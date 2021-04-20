@@ -1,0 +1,28 @@
+{% extends "aa.html" %}
+{% block body %}
+<h1 align="center"><u><strong>EDIT TROUPE</strong></U></h1>
+<form action="/myapp/adm_update_troupe_creation/" method="post" enctype="multipart/form-data">
+<table border="1" align="center">
+  <tr>
+    <th >Troupe Logo</th>
+    <td ><label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField" /></td>
+  </tr>
+  <tr>
+    <th>Troupe Name</th>
+    <td><label for="textfield"></label>
+      <input type="text" name="tr" id="textfield" value="{{ upd.troupe_name }}" /></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><label for="textarea"></label>
+      <textarea name="textarea" id="textarea" cols="45" rows="5"> {{upd.description }}</textarea></td>
+  </tr>
+  <tr>
+    <td >&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="EDIT" /></td>
+  </tr>
+</table>
+
+</form>
+{% endblock %}

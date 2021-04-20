@@ -1,0 +1,31 @@
+{% extends "aa.html" %}
+{% block body %}
+    <h2 align="center"><u><b>TROUPE CREATION</b></U></h2>
+<form action="/myapp/mngr_troupe_creation_post/" method="post" enctype="multipart/form-data">
+<table  border="1" align="center">
+  <tr>
+    <th width="133">Troupe Logo</th>
+    <td><label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField"  required /></td>
+  </tr>
+
+
+  <tr>
+    <th>Troupe Name</th>
+    <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" required  /></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><label for="textarea"></label>
+      <textarea name="textarea" id="textarea" cols="45" rows="5" required ></textarea></td>
+  </tr>
+  <tr>
+    <td height="31">&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="CREATE" /></td>
+  </tr>
+</table>
+
+</form>
+{% endblock %}
+

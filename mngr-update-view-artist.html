@@ -1,0 +1,51 @@
+{% extends "aa.html" %}
+{% block body %}
+<h1 align="center"><u><strong> UPDATE ARTIST</strong></U></h1>
+<form action="/myapp/mngr_update_artist/" method="post" enctype="multipart/form-data">
+<table  border="1" align="center">
+  <tr>
+    <th >Troupe Name</th>
+    <td ><select name="select" id="select">
+    <option value="{{ upd.TROUPE.id}}" selected>{{ upd.TROUPE.troupe_name}}</option>
+         {% for i in res1 %}
+          <option value="{{ i.id }}">{{ i.troupe_name }}</option>
+          {% endfor %}
+
+    </select></td>
+  </tr>
+  <tr>
+    <th >Artist Name</th>
+    <td><input type="text" name="textfield" id="textfield" value="{{ upd.artist_name }}"/></td>
+  </tr>
+  <tr>
+    <th >Place</th>
+    <td><input type="text" name="textfield2" id="textfield2" value="{{ upd.place}}" /></td>
+  </tr>
+  <tr>
+    <th >Gender</th>
+    <td><input type="radio" name="radio" id="radio" value="male" {% if upd.gender == "male" %}checked{% endif %}/>
+    male
+      <input type="radio" name="radio" id="radio2" value="female" {% if upd.gender == "female" %}checked{% endif %}/>
+female</td>
+  </tr>
+  <tr>
+    <th >Phn No</th>
+    <td><input type="text" name="textfield3" id="textfield3" value="{{ upd.phone }}"/></td>
+  </tr>
+  <tr>
+    <th >Photo</th>
+    <td><input type="file" name="fileField" id="fileField"  value="{{ upd.artist_photo }}"/></td>
+  </tr>
+  
+  <tr>
+    <th>Type of performance</th>
+    <td><input type="text" name="textfield5" id="textfield5" value="{{ upd.item_name }}"/></td>
+  </tr>
+  <tr>
+    <td >&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="UPDATE" /></td>
+  </tr>
+</table>
+
+</form>
+{% endblock %}

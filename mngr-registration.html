@@ -1,0 +1,136 @@
+
+{% extends "aaB.html" %}
+{% block body %}
+
+    <h1 align="center"><strong>TROUPE MANAGER REGISTRATION</strong></h1>
+<form action="/myapp/manager_registration/" method="post" enctype="multipart/form-data" onsubmit="return validate()">
+    <table  class="table table-bordered">
+
+
+
+    <tr>
+    <th >Name</th>
+    <td ><label for="textfield"></label>
+      <input type="text" name="textfield" required id="textfield" class="form-control" /></td>
+  </tr>
+        <tr>
+    <th >Gender</td>
+    <td><label for="radio" >
+          <input type="radio" name="radio" required id="radio2" value="Female" checked  />
+        Female
+        <input type="radio" name="radio" required id="radio" value="Male" />
+        Male </label></td>
+
+  </tr>
+  <tr>
+    <th>Place</th>
+    <td><input type="text" name="textfield2"   required id="textfield2"  class="form-control" /></td>
+  </tr>
+  <tr>
+    <th>Post</th>
+    <td><input type="text" name="textfield3"   required id="textfield3"  class="form-control" /></td>
+  </tr>
+  <tr>
+    <th >Pin</th>
+    <td><input type="text" name="textfield4"  required id="textfield4" class="form-control"  /></td>
+  </tr>
+  <tr>
+    <th >District</th>
+    <td><label for="select"></label>
+      <select name="select" id="select"  pattern= "[a-zA-Z]" required class="form-control" >
+           <option value=""></option>
+          <option value="kasarkode">Kasarkode</option>
+          <option value="kanoor">Kanoor</option>
+          <option value="vayanad">Vayanad</option>
+          <option value="kozhikode">Kozhikode</option>
+          <option value="palakkad">Palakkad</option>
+          <option value="thrissur">Thrissur</option>
+          <option value="eranangulam">Eranangulam</option>
+          <option value="edukki">Edukki</option>
+          <option value="kottayam">Kottayam</option>
+          <option value="pathanamthita">Pathanamthita</option>
+          <option value="alappuzha">Alappuzha</option>
+          <option value="kollam">Kollam</option>
+          <option value="thiruvanandhapuram">Thiruvanandhapuram</option>
+
+      </select></td>
+  </tr>
+       <tr>
+    <th >Phone</th>
+    <td><input type="text" name="textfield8"  pattern="[789][0-9]{9}"id="textfield8"  class="form-control" required/></td>
+  </tr>
+  <tr>
+    <th >Email Id</th>
+    <td><input type="text" name="textfield6" id="textfield6" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"  class="form-control"/></td>
+  </tr>
+
+
+  <tr>
+    <th >Photo</th>
+    <td><label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField" required class="form-control" /></td>
+  </tr>
+      <tr>
+    <th >Type of performance</th>
+   <td><input type="text" name="textfield9" id="textfield9" required  class="form-control"/></td>
+  </tr>
+  <tr>
+    <th >Password</th>
+    <td><input type="password" name="textfield10" id="textfield10" required class="form-control"/></td>
+  </tr>
+  <tr>
+    <td  colspan="2"> <input type="submit" name="button" id="button" value="REGISTRATION"  align="right" class="btn btn-success"/></td>
+   
+  </tr>
+</table>
+</form>
+    <script>
+    function validate(){
+        var letters = /^[A-Za-z ]+$/;
+        var cate=document.getElementById('textfield');
+        if(!cate.value.match(letters))
+      {
+      alert(' name should be alphabet only');
+      return false;
+      }
+
+         var letters = /^[A-Za-z]+$/;
+        var catm=document.getElementById('textfield2');
+        if(!catm.value.match(letters))
+      {
+      alert('place should be alphabet only');
+      return false;
+      }
+
+      var letters = /^[A-Za-z]+$/;
+        var catd=document.getElementById('textfield3');
+        if(!catd.value.match(letters))
+      {
+      alert('post should be alphabet only');
+      return false;
+      }
+
+       var numbers = /^[0-9]+$/;
+        var cat=document.getElementById('textfield4');
+        if(!cat.value.match(numbers))
+        {
+        alert('Pin should be numbers only');
+
+        return false;
+        }
+
+         var numbers = /^[0-9]+$/;
+        var cat=document.getElementById('textfield8');
+        if(!cat.value.match(numbers))
+        {
+        alert('Phone number should be numbers only');
+
+        return false;
+        }
+
+
+        return true;
+        }
+
+    </script>
+{% endblock %}

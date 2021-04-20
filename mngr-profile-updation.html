@@ -1,0 +1,64 @@
+{% extends "aa.html" %}
+{% block body %}
+ <h1 align="center"><strong>PROFILE UPDATION</strong></h1>
+<form action="/myapp/mngr_update_profile/" method="post" enctype="multipart/form-data">
+    <table  class="table table-bordered">
+    <td colspan="2"><img src="{{ data.photo }}" height="100" width="100" /></td>
+    </tr>
+  <tr>
+    <th >Troupe manager name</th>
+    <td ><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" value="{{ data.mngr_name }}" required  class="form-control" /></td>
+  </tr>
+  <tr>
+    <th>Place</th>
+    <td><input type="text" name="textfield2"  value="{{ data.place }}" id="textfield2" class="form-control" required/></td>
+  </tr>
+  <tr>
+    <th>Post</th>
+    <td><input type="text" name="textfield3"  value="{{ data.post }}" id="textfield3" class="form-control" required /></td>
+  </tr>
+  <tr>
+    <th >District</th>
+    <td>
+      <select name="select" id="select"  class="form-control">
+           <option>{{ data.district }}</option>
+          <option value="kasarkode">Kasarkode</option>
+          <option value="kanoor">Kanoor</option>
+          <option value="vayanad">Vayanad</option>
+          <option value="kozhikode">Kozhikode</option>
+          <option value="palakkad">Palakkad</option>
+          <option value="thrissur">Thrissur</option>
+          <option value="eranangulam">Eranangulam</option>
+          <option value="edukki">Edukki</option>
+          <option value="kottayam">Kottayam</option>
+          <option value="pathanamthita">Pathanamthita</option>
+          <option value="alappuzha">Alappuzha</option>
+          <option value="kollam">Kollam</option>
+          <option value="thiruvanandhapuram">Thiruvanandhapuram</option>
+
+      </select></td>
+  </tr>
+  <tr>
+    <th>Pin</th>
+    <td><input type="text" name="textfield4"  value="{{ data.pin }}"id="textfield4" required class="form-control"/></td>
+  </tr>
+  <tr>
+    <th>Phone number</th>
+    <td><input type="text" name="textfield5"   value="{{ data.phno }}"id="textfield5" required class="form-control"/></td>
+  </tr>
+  <tr>
+    <th>Type of Performance</th>
+   <td><input type="text" name="textfield9"  value="{{ data.item_name }}" id="textfield9" required class="form-control"/></td>
+  </tr><tr>
+    <th >Photo</th>
+    <td>
+      <input type="file" name="fileField" id="fileField" class="form-control" required/></td>
+  </tr>
+  <tr>
+ <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="UPDATE" class="btn btn-success"/></td>
+    </tr>
+</table>
+</form>
+{% endblock %}
