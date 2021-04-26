@@ -1,0 +1,27 @@
+{% extends "aa.html" %}
+{% block body %}
+<h1 align="center"><strong>VIEW UPLOADS</strong></h1>
+<form action= method="get" enctype="multipart/form-data" >
+<table  class="=table table-bordered">
+  <tr>
+    <th >SlNo</th>
+    <th >File</th>
+    <th>Type</th>
+    <th >&nbsp;</th>
+    <th >&nbsp;</th>
+    <th ></th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}&nbsp;</td>
+    <td>{{i.file_upload }}</td>
+    <td>{{i.file_type }}</td>
+        <td><a href="/myapp/mngr_download_uploads/{{ i.file_upload }}" download  class="btn btn-secondary"> Download</a></td>
+        <td><a href="/myapp/edit_uploads/{{ i.pk }}" class="btn btn-success">Edit</a></td>
+        <td><a href="/myapp/mngr_delete_uploads/{{ i.pk }}" class="btn btn-danger"> Delete</a></td>
+              {% endfor %}
+  </tr>
+</table>
+</form>
+{% endblock %}
+

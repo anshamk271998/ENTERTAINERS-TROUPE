@@ -1,0 +1,33 @@
+{% extends "aa.html" %}
+{% block body %}
+<h1 align="center"><strong>VIEW TROUPE</strong></h1>
+<form action="" method="get">
+<table  class="table table-bordered">
+  <tr>
+    <th >SlNo</th>
+{#    <th ></th>#}
+    <th>Troupe name</th>
+      <th>Description</th>
+    <th >&nbsp;</th>
+    <th >&nbsp;</th>
+  </tr>
+
+    {% for i in data %}
+
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+
+{#        <td align="center"></td>#}
+
+     <td><img src="{{ i.troupe_logo }}" width="100" height="100"/><br><br>{{i.troupe_name }}</td>
+    <td>{{i.description }}</td>
+
+<td><a href="/myapp/mngr_delete_troupe/{{ i.pk }}" class="btn btn-danger"> Delete</a></td>
+      <td><a href="/myapp/edit_troupe_creation/{{ i.pk }}" class="btn btn-info">Edit</a></td>
+
+        {% endfor %}
+  </tr>
+</table>
+
+</form>
+{% endblock %}
