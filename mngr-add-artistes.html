@@ -1,0 +1,87 @@
+{% extends "aa.html" %}
+{% block body %}
+<h1 align="center"><u><strong>ADD ARTISTS</strong></U></h1>
+<form action="/myapp/mngr_add_artist_post/" method="post" enctype="multipart/form-data" onsubmit="return validate()">
+<table  class="table table-bordered">
+  <tr>
+    <th >Troupe name</th>
+   <td><label for="select"></label>
+      <select name="select" id="select"  required class="form-control" >
+          {% for i in data %}
+          <option value="{{ i.pk }}">{{ i.troupe_name }}</option>
+          {% endfor %}
+    </select></td>
+  </tr>
+  <tr>
+    <th >Artist name</th>
+    <td><input type="text" name="textfield" id="textfield" required class="form-control"/></td>
+  </tr>
+  <tr>
+    <th >Place</th>
+    <td><input type="text" name="textfield2" id="textfield2" required class="form-control"/></td>
+  </tr>
+  <tr>
+    <th >Gender</th>
+    <td><input type="radio" name="radio" id="radio" value="male" />
+    female
+      <input type="radio" name="radio" id="radio2" value="female" />
+male</td>
+  </tr>
+  <tr>
+    <th>Phone number</th>
+    <td><input type="text" name="textfield3" id="textfield3"  pattern="[789][0-9]{9}" required class="form-control"/></td>
+  </tr>
+  <tr>
+    <th >Photo</th>
+    <td><input type="file" name="fileField" required id="fileField" /></td>
+  </tr>
+  <tr>
+    <th >Email id</th>
+    <td><input type="text" name="textfield4" id="textfield4"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" required class="form-control" /></td>
+  </tr>
+  <tr>
+    <th >Performance type</th>
+    <td><input type="text" name="textfield5" id="textfield5"required class="form-control"/>
+   </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="ADD" class="btn btn-success" /></td>
+  </tr>
+</table>
+
+</form>
+      <script>
+    function validate(){
+        var letters = /^[A-Za-z ]+$/;
+        var cate=document.getElementById('textfield');
+        if(!cate.value.match(letters))
+      {
+      alert(' name should be alphabet only');
+      return false;
+      }
+
+         var letters = /^[A-Za-z]+$/;
+        var catm=document.getElementById('textfield2');
+        if(!catm.value.match(letters))
+      {
+      alert('place should be alphabet only');
+      return false;
+      }
+
+
+         var numbers = /^[0-9]+$/;
+        var cat=document.getElementById('textfield3');
+        if(!cat.value.match(numbers))
+        {
+        alert('Phone number should be numbers only');
+
+        return false;
+        }
+
+
+        return true;
+        }
+
+    </script>
+{% endblock %}

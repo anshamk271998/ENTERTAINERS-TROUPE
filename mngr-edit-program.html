@@ -1,0 +1,38 @@
+{% extends "aa.html" %}
+{% block body %}
+<h1 align="center"><strong>EDIT PROGRAMS</strong></h1>
+<form action="/myapp/mngr_add_program_post/" method="post">
+<table  class="table-bordered">
+ <tr>
+    <th >Troupe name</th>
+   <td><label for="select"></label>
+      <select name="select" id="select"  required class="form-control" >
+           <option value="{{ upd.TROUPE.id}}" selected>{{ upd.TROUPE.troupe_name}}</option>
+         {% for i in res1 %}
+          <option value="{{ i.id }}">{{ i.troupe_name }}</option>
+          {% endfor %}
+{#          {% for i in data %}#}
+{#          <option value="{{ i.pk }}">{{ i.troupe_name }}</option>#}
+{#          {% endfor %}#}
+    </select></td>
+  </tr>
+ <tr>
+    <th >Program name</th>
+    <td><input type="text" name="textfield" id="textfield" value="{{ upd.program_name }}"required class="form-control"/></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><textarea name="textarea" id="textarea" required class="form-control">{{ upd.description }}</textarea></td>
+  </tr>
+  <tr>
+    <th>Duration</th>
+    <td><input type="text" name="textfield2" id="textfield2" value="{{ upd.duration }}" required class="form-control"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="EDIT" class="btn-success"/></td>
+  </tr>
+</table>
+
+</form>
+{% endblock %}
