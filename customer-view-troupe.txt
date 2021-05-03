@@ -1,0 +1,88 @@
+package com.example.entertainers_troupe;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+public class custom_view_troupe extends BaseAdapter {
+    String[] name,descr,img,id;
+    private Context context;
+
+    public custom_view_troupe(Context appcontext,String[]name1,String[]descr1,String[] img1,String[] id1)
+    {
+        this.context=appcontext;
+        this.name=name1;
+        this.descr=descr1;
+        this.img=img1;
+        this.id=id1;
+
+
+
+    }
+
+    @Override
+    public int getCount() {
+        return name.length;
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        LayoutInflater inflator=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View gridView;
+        if(view==null)
+        {
+            gridView=new View(context);
+            //gridView=inflator.inflate(R.layout.customview, null);
+            gridView=inflator.inflate(R.layout.custom_view_troupe,null);
+
+        }
+        else
+        {
+            gridView=(View)view;
+
+        }
+        TextView tv_name=(TextView)gridView.findViewById(R.id.textView6);
+        TextView tv_descr=(TextView)gridView.findViewById(R.id.textView9);
+        ImageView im=(ImageView) gridView.findViewById(R.id.imageView2);
+        Button bt_book=(Button) gridView.findViewById(R.id.button2);
+        Button bt_rate=(Button)gridView.findViewById(R.id.button4);
+        Button bt_work=(Button) gridView.findViewById(R.id.button5);
+
+        tv_name.setTextColor(Color.BLACK);
+        tv_descr.setTextColor(Color.BLACK);
+
+
+        tv_name.setText(name[i]);
+        tv_descr.setText(descr[i]);
+
+
+        SharedPreferences sh= PreferenceManager.getDefaultSharedPreferences(context);
+        String ip=sh.getString("ip","");
+        String url="http://" + ip + ":8000"+img[i];
+        Picasso.with(context).load(url).into(im);
+
+        return gridView;
+    }
+}
