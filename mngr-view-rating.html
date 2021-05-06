@@ -1,0 +1,140 @@
+{% extends "aa.html" %}
+{% block body %}
+<form action="/myapp/mgr_view_user_rating_search/" method="post">
+<table  class="table table-hover">
+  <tr>
+    <th >Troupe Name</th>
+    <td ><label for="select"></label>
+      <select name="select" id="select">
+      <option>--select--</option>
+          {% for i in troup %}
+
+          <option value="{{ i.id }}">{{ i.troupe_name }}</option>
+          {% endfor %}
+    </select></td>
+    <td ><form id="form1" name="form1" method="post" action="">
+      <input type="submit" name="button" id="button" value="SEARCH" />
+    </form></td>
+  </tr>
+</table>
+{% load static %}
+<table  class="table table-hover">
+  <tr>
+    <th >SlNo</th>
+    <th >Customer</td>
+    <th >Troup</td>
+    <th >Date</th>
+    <th>Rating</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td >&nbsp;{{ forloop.counter }}</td>
+    <td><img src="{{ i.CUSTOMER.cust_photo }}" height="100px" width="100px"><br>{{ i.CUSTOMER.cust_name }}</td>
+    <td><img src="{{ i.TROUPE.troupe_logo }}" height="100px" width="100px"><br>&nbsp;{{ i.TROUPE.troupe_name }}</td>
+    <td>&nbsp;{{ i.date }}</td>
+  {% ifequal i.rating '0.0' %}
+
+  <td>
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  </td>
+  {% endifequal %}
+  {% ifequal i.rating '1.0' %}
+
+  <td>
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  </td>
+  {% endifequal %}
+  {% ifequal i.rating '1.5' %}
+
+  <td>
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'half.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  </td>
+  {% endifequal %}
+  {% ifequal i.rating '2.0' %}
+
+  <td>
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  </td>
+  {% endifequal %}
+  {% ifequal i.rating '2.5' %}
+
+  <td>
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'half.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  </td>
+  {% endifequal %}
+  {% ifequal i.rating '3.0' %}
+
+  <td>
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  </td>
+  {% endifequal %}
+  {% ifequal i.rating '3.5' %}
+
+  <td>
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'half.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  </td>
+  {% endifequal %}
+  {% ifequal i.rating '4.0' %}
+
+  <td>
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'empty.jpg' %}" height="50dp" width="50dp">
+  </td>
+  {% endifequal %}
+  {% ifequal i.rating '4.5' %}
+
+  <td>
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'half.jpg' %}" height="50dp" width="50dp">
+  </td>
+  {% endifequal %}
+  {% ifequal i.rating '5.0' %}
+
+  <td>
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  <img src="{% static 'full.jpg' %}" height="50dp" width="50dp">
+  </td>
+  {% endifequal %}
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+{% endblock %}
