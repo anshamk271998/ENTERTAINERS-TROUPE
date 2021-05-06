@@ -1,0 +1,69 @@
+{% extends "aa.html" %}
+{% block body %}
+<body>
+<form method="post" action="/myapp/mgr_view_user_bookingmore_update/" >
+<table class="table table-hover">
+  <tr>
+    <th>Booking No</th>
+    <td>&nbsp;{{data.id}}</td>
+  </tr>
+  <tr>
+    <!--book_date,current_date,my_budget,approved_budget,venue,stage_time,status,description-->
+    <th>Date</th>
+   <td>&nbsp;{{data.current_date}}</td>
+  </tr>
+  <tr>
+    <th colspan="2">VENUE INFORMATION:</th>
+    </tr>
+  <tr>
+    <th>Venue Address</th>
+    <td>&nbsp;{{data.venue}}</td>
+  </tr>
+  <tr>
+    <th>Booking Date</th>
+    <td>&nbsp;{{data.book_date}}</td>
+  </tr>
+  <tr>
+    <th>Stage Time</th>
+    <td>&nbsp;{{data.stage_time}}</td>
+  </tr>
+  <tr>
+    <th colspan="2">TROUPE INFORMATION:</th>
+    </tr>
+  <tr>
+    <th>Troupe Name</th>
+    <td>&nbsp;{{data.TROUPE.troupe_name}}</td>
+  </tr>
+  <tr>
+    <th>Troupe Logo</th>
+    <td><img src="{{data.TROUPE.troupe_logo}}" height="100px" width="100px"></td>
+  </tr>
+  <tr>
+    <th colspan="2">CUSTOMER INFORMATION:</th>
+    </tr>
+  <tr>
+    <th>Customer Name</th>
+    <td>&nbsp;{{data.CUSTOMER.cust_name}}</td>
+  </tr>
+  <tr>
+    <th>Place</th>
+    <td>&nbsp;{{data.CUSTOMER.place}}</td>
+  </tr>
+  <tr>
+    <th>User Budget</th>
+    <td>&nbsp;{{data.my_budget}}</td>
+  </tr>
+  <tr>
+    <th>Expected Budget</th>
+    <td><input type="text" name="am" id="textfield" value="0"  required/><input type="hidden" name="bid" value="{{ bid }}" id="textfield" /></td>
+  </tr>
+  <tr>
+    <td><input type="submit" name="button" id="button" value="ACCEPT" /></td>
+     <td><input type="submit" name="button" id="button" value="REJECT" formnovalidate/></td>
+   
+  </tr>
+</table>
+
+</form>
+</body>
+{% endblock %}
