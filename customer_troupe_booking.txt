@@ -1,0 +1,204 @@
+package com.example.entertainers_troupe;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+public class Customer_troup_booking extends AppCompatActivity implements View.OnClickListener {
+EditText edbookdate,edbudget,edvenue,edstagetime,eddesc,edacc,edpin;
+Button bsave;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_customer_troup_booking);
+        edbookdate=(EditText)findViewById(R.id.bookdate);
+        edbudget=(EditText)findViewById(R.id.budget);
+        edvenue=(EditText)findViewById(R.id.veneu);
+        edstagetime=(EditText)findViewById(R.id.stagetime);
+        eddesc=(EditText)findViewById(R.id.desc);
+        edacc=(EditText)findViewById(R.id.accno);
+        edpin=(EditText)findViewById(R.id.accpin);
+        bsave=(Button)findViewById(R.id.send);
+        bsave.setOnClickListener(this);
+
+
+
+        final Calendar myCalendar = Calendar.getInstance();
+
+
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String myFormat = "MM/dd/yy"; //In which you need put here
+
+
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                edbookdate.setText(sdf.format(myCalendar.getTime()));
+            }
+
+        };
+        edbookdate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new DatePickerDialog(Customer_troup_booking.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        final String bdate=edbookdate.getText().toString();
+        final String bbud=edbudget.getText().toString();
+        final String bven=edbudget.getText().toString();
+        final String bst=edstagetime.getText().toString();
+        final String bds=eddesc.getText().toString();
+        final String bacc=edacc.getText().toString();
+        final String bpin=edpin.getText().toString();
+
+        if(bdate.length()==0){
+            edbookdate.setError("Missing");
+        }
+        else if(bbud.length()==0){
+            edbudget.setError("Missing");
+        }else if(bven.length()==0){
+            edvenue.setError("Missing");
+        }else if(bst.length()==0){
+            edstagetime.setError("Missing");
+        }else if(bds.length()==0){
+            eddesc.setError("Missing");
+        }else if(bacc.length()==0){
+            edacc.setError("Missing");
+        }else if(bpin.length()==0){
+            edpin.setError("Missing");
+        }else {
+
+
+            SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String hu = sh.getString("ip", "");
+            String url = "http://" + hu + ":8000/myapp/and_booking_with_payment/";
+
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            //  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+
+                            // response
+                            try {
+                                JSONObject jsonObj = new JSONObject(response);
+                                if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
+//                                    String lid = jsonObj.getString("lid");
+
+//                                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//                                    SharedPreferences.Editor ed = sh.edit();
+//                                    ed.putString("lid", lid);
+//                                    ed.commit();
+
+                                    Intent i = new Intent(getApplicationContext(), customer_home.class);
+                                    startActivity(i);
+                                }
+                                else if (jsonObj.getString("status").equalsIgnoreCase("less")) {
+//                                    String lid = jsonObj.getString("lid");
+
+//                                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//                                    SharedPreferences.Editor ed = sh.edit();
+//                                    ed.putString("lid", lid);
+//                                    ed.commit();
+
+                                    Toast.makeText(Customer_troup_booking.this, "INSUFFIENT BALANCE", Toast.LENGTH_SHORT).show();
+                                }
+
+
+                                // }
+                                else {
+                                    Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
+                                }
+
+                            } catch (Exception e) {
+                                Toast.makeText(getApplicationContext(), "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // error
+                            Toast.makeText(getApplicationContext(), "eeeee" + error.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+            ) {
+                @Override
+                protected Map<String, String> getParams() {
+                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    Map<String, String> params = new HashMap<String, String>();
+
+
+                    //  params.put("uname",usernam);
+                    //  params.put("pass",password);
+
+                    params.put("bookdate", bdate);
+                    params.put("budget", bbud);
+                    params.put("venue", bven);
+                    params.put("stagetime", bst);
+                    params.put("desc", bds);
+                    params.put("accno", bacc);
+                    params.put("accpin", bpin);
+                    params.put("troupid", sh.getString("troupid",""));
+                    params.put("lid", sh.getString("lid",""));
+
+                    return params;
+                }
+            };
+
+            int MY_SOCKET_TIMEOUT_MS = 100000;
+
+            postRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    MY_SOCKET_TIMEOUT_MS,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            requestQueue.add(postRequest);
+
+
+
+        }
+    }
+}
