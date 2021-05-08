@@ -1,0 +1,26 @@
+package com.example.entertainers_troupe;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.MediaController;
+import android.widget.VideoView;
+
+public class Playvdo extends AppCompatActivity {
+    VideoView vv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_playvdo);
+
+        vv=(VideoView)findViewById(R.id.videoView);
+        MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(vv);
+        // Set video link (mp4 format )
+        Uri video = Uri.parse(getIntent().getStringExtra("url"));
+        vv.setMediaController(mediaController);
+        vv.setVideoURI(video);
+        vv.start();
+    }
+}
