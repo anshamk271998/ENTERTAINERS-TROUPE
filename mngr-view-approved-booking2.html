@@ -1,0 +1,71 @@
+{% extends "aa.html" %}
+{% block body %}
+    <h2 align="center"><strong>APPROVAD BOOKING</strong></h2>
+<form method="post" style="background-color:#f5f9ff" action="/myapp/mgr_view_user_bookingmore_update/" >
+<table  class=" table table-bordered">
+
+  <tr>
+    <th>Booking No</th>
+    <td>&nbsp;{{data.bookingid.id}}</td>
+  </tr>
+  <tr>
+    <!--book_date,current_date,my_budget,approved_budget,venue,stage_time,status,description-->
+    <th>Date</th>
+   <td>&nbsp;{{data.bookingid.current_date}}</td>
+  </tr>
+  <tr>
+    <th colspan="2">VENUE INFORMATION:</th>
+    </tr>
+  <tr>
+    <th>Venue Address</th>
+    <td>&nbsp;{{data.bookingid.venue}}</td>
+  </tr>
+  <tr>
+    <th>Booking Date</th>
+    <td>&nbsp;{{data.bookingid.book_date}}</td>
+  </tr>
+  <tr>
+    <th>Stage Time</th>
+    <td>&nbsp;{{data.bookingid.stage_time}}</td>
+  </tr>
+  <tr>
+    <th colspan="2">TROUPE INFORMATION:</th>
+    </tr>
+  <tr>
+    <th>Troupe Name</th>
+    <td>&nbsp;{{data.bookingid.TROUPE.troupe_name}}</td>
+  </tr>
+  <tr>
+    <th>Troupe Logo</th>
+    <td><img src="{{data.bookingid.TROUPE.troupe_logo}}" height="100px" width="100px"></td>
+  </tr>
+  <tr>
+    <th colspan="2">CUSTOMER INFORMATION:</th>
+    </tr>
+  <tr>
+    <th>Customer Name</th>
+    <td>&nbsp;{{data.bookingid.CUSTOMER.cust_name}}</td>
+  </tr>
+  <tr>
+    <th>Place</th>
+    <td>&nbsp;{{data.bookingid.CUSTOMER.place}}</td>
+  </tr>
+  <tr>
+    <th>User Budget</th>
+    <td>&nbsp;{{data.bookingid.my_budget}}</td>
+  </tr>
+  <tr>
+    <th>Expected Budget</th>
+    <td>{{ data.bookingid.approved_budget  }}</td>
+  </tr><tr>
+    <th>Payment Amout</th>
+    <td>{{ data.amount  }}</td>
+  </tr>
+    <tr>
+        <th>Bill</th>
+        <td><a href="{{ data.bill_image }}">View</a> </td>
+    </tr>
+
+</table>
+</form>
+{% endblock %}
