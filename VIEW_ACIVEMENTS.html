@@ -1,0 +1,41 @@
+{% extends "aa.html" %}
+{% block body %}
+<h1 align="center"><strong>VIEW ACHIEVEMENTS</strong></h1>
+
+<form action="/myapp/mgr_view_achivements/" method="post">
+<table  class="table table-bordered">
+  <tr>
+    <th>Troupe name</th>
+    <td><select name="select" id="select" class="form-control " required>
+
+        {% for i in trp %}
+          <option value="{{ i.pk }}">{{ i.troupe_name }}</option>
+          {% endfor %}
+    </select></td>
+    <td><input type="submit" name="button" id="button" value="SEARCH" class="btn-dark"/></td>
+  </tr>
+</table>
+<table class="table table-bordered">
+  <tr>
+    <th>SlNo</th>
+    <th>
+        Image
+    </th>
+      <th>Date</th>
+    <th>Description</th>
+      <td>&nbsp;</td>
+
+  </tr>
+  {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}&nbsp;</td>
+    <td><img src="{{i.image }}" height="100px" width="100px"></td>
+    <td>{{i.desc}}&nbsp;</td>
+    <td>{{i.date}}</td>
+ <td><a href="/myapp/mngr_delete_achivenrmts/{{ i.pk }}" class="btn btn-danger"> Delete</a></td>
+
+        {% endfor %}
+  </tr>
+</table>
+</form>
+{% endblock %}
