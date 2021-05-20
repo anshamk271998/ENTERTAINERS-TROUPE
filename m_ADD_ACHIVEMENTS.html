@@ -1,0 +1,31 @@
+{% extends "aa.html" %}
+{% block body %}
+<h1 align="center"><strong>ADD PROGRAMS</strong></h1>
+<form action="/myapp/mgr_add_achivements/" method="post" enctype="multipart/form-data">
+<table  class=" table table-bordered">
+ <tr>
+    <th >Troupe name</th>
+   <td><label for="select"></label>
+      <select name="select" id="select"  required class="form-control" >
+          {% for i in data %}
+          <option value="{{ i.pk }}">{{ i.troupe_name }}</option>
+          {% endfor %}
+    </select></td>
+  </tr>
+
+  <tr>
+    <th>Description</th>
+    <td><textarea name="des" id="textarea" cols="45" rows="5"  required class="form-control"></textarea></td>
+  </tr>
+  <tr>
+    <th>Duration</th>
+    <td><input type="file" name="file" id="textfield2"  required class="form-control"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="ADD" class="btn-success"/></td>
+  </tr>
+</table>
+
+</form>
+{% endblock %}
