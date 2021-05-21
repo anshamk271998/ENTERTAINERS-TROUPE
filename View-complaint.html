@@ -1,6 +1,6 @@
 {% extends "index3.html" %}
 {% block body %}
-    <h1 align="center"><u>VIEW COMPLIANT</U></h1>
+    <h2 align="center"><strong>VIEW COMPLIANT</strong></h2>
 <form id="form1" name="form1" method="post" style="background-color:#f5f9ff"action="/myapp/adm_view_complaint_search/">
   <table class="table table-bordered">
     <tr>
@@ -8,7 +8,7 @@
       <td><input type="date" name="d1" id="textfield" /></td>
       <th>To Date</th>
       <td><input type="date" name="d2" id="textfield2" /></td>
-      <td><input type="submit" name="button" id="button" value="Go" /></td>
+      <td><input type="submit" name="button" id="button" value="Search" class="btn-secondary" /></td>
     </tr>
   </table>
   <table  class="table table-bordered">
@@ -31,7 +31,7 @@
        <td>{{ i.date }}</td>
      <td>
          {%  if i.reply == 'pending' %}
-            <a href="/myapp/adm_sent_reply/{{ i.id }}" class="btn btn-primary">Send reply</a></td>
+            <a href="/myapp/adm_sent_reply/{{ i.id }}" class="btn btn-success">Send reply</a></td>
         {% else %}
             {{ i.reply }}
         {% endif %}
