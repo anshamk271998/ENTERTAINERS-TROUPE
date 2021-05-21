@@ -5,12 +5,12 @@
     <table class="table table-bordered">
      <h3 align="center"><strong>FEEDBACK</strong></h3></p>
         <tr>
-            <td>Troup</td>
+            <th>Troupe</th>
             <td><select name="tid">
                 {% for i in troup %}
                 <option value="{{ i.id }}">{{ i.troupe_name }}</option>
                 {% endfor %}
-            </select><input type="submit" value="view"></td>
+            </select><input type="submit" value="view" class="btn-primary"></td>
             <td></td>
         </tr>
   <tr>
